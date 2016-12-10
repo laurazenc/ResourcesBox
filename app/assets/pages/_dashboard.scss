@@ -1,0 +1,197 @@
+$sidebarWidth: 254px;
+$a: 100%;
+
+.dashContainer {
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    margin-top: 53px;
+    width: 100%;
+
+    .row {
+        height: 100%;
+
+        & > div {
+            height: 100%;
+        }
+    }
+}
+
+#grid{
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+
+.mainContainer {
+    position: relative;
+    width: 100%;
+
+    .btnArea {
+        display: block;
+        text-align: right;
+        padding: 7px;
+
+        a {
+            border: none;
+            background-color: $tourquise !important;
+            padding: 7px 10px;
+            text-transform: uppercase;
+
+            i {
+                margin-left: 5px;
+                color: white;
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .card-loading{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+
+      i{
+        display: block;
+        font-size: 40px;
+        color: $tourquise;
+        margin-right: 15px;
+      }
+    }
+
+    .card-list {
+      margin-bottom: 10px;
+      min-height: 1px;
+      height: auto !important;
+        .card-list-container {
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+            border-radius: 5px;
+            padding: 7px;
+            display: flex;
+            flex-direction: column;
+
+            .list-content{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              .list-name {
+                font-size: 16px;
+                font-weight: bold;
+                text-align: left;
+
+                a{
+                  color: #333;
+
+                  &:hover{
+                    text-decoration: none;
+                    color: $link;
+                    cursor: auto;
+                  }
+                }
+              }
+
+              .list-category {
+                text-transform: uppercase;
+                font-size: 10px;
+                font-weight: bold;
+                line-height: 17px;
+                padding: 2px 5px;
+                border-radius: 5px;
+                color: white;
+              }
+              .category-Design{
+                background-color: $yellow;
+              }
+
+              .category-Other{
+                background-color: $blue;
+              }
+
+              .category-Development{
+                background-color: $red;
+              }
+
+              .category-Tutorial{
+                background-color: $orange;
+              }
+            }
+
+            .list-data-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 0 0;
+
+                .list-resources{
+                  text-transform: uppercase;
+                  color: #999;
+                  font-size: 12px;
+                }
+
+                .list-info{
+                  ul{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 0 !important;
+
+                    li{
+                      text-transform: uppercase;
+                      margin-left: 15px;
+                      font-size: 12px;
+                    }
+                  }
+                }
+            }
+
+            // .list-resources-container {
+            //     clear: both;
+            //     // max-height: 150px;
+            //     height: auto;
+            //     margin-top: 10px;
+            //     overflow: scroll;
+            //     position: relative;
+            //
+            //     .list-resource {
+            //         padding: 5px;
+            //         width: 100%;
+            //         border-bottom: 1px dashed #ccc;
+            //
+            //         .resource-name {
+            //             font-size: 15px;
+            //
+            //             a {
+            //                 color: #999;
+            //
+            //                 &:hover {
+            //                     text-decoration: underline;
+            //                 }
+            //             }
+            //         }
+            //
+            //         .resource-info {
+            //           animation: all 1s linear;
+            //             .resource-description {
+            //                 font-size: 13px;
+            //                 color: #999;
+            //             }
+            //         }
+            //
+            //         .more-info {
+            //             text-transform: uppercase;
+            //             font-size: 12px;
+            //             text-align: right;
+            //             cursor: pointer;
+            //         }
+            //
+            //         &:last-child {
+            //             border: none;
+            //         }
+            //     }
+            // }
+        }
+    }
+}

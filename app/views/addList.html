@@ -1,0 +1,118 @@
+<div class="container-fluid addListContainer" ng-controller="AddListController">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="form-group col-sm-12 noLeft">
+          <div class="form-group col-sm-12 noLeft">
+            <p>1. Create the list</p>
+          </div>
+          <div class="form-group col-sm-12 noLeft">
+            <label for="username">List name: *</label>
+            <div>
+              <input class="form-control" id="listname"
+                     ng-model="listname"
+                     name="listname"
+              />
+            </div>
+          </div>
+          <div class="form-group col-sm-12 noLeft">
+            <label for="category">Category:</label>
+            <div>
+              <select class="form-control" name="category" id="category"
+                ng-options="option.name for option in data.availableOptions track by option.id"
+                ng-model="data.selectedOption"></select>
+            </div>
+          </div>
+
+
+          <div class="col-md-12 noLeft form-group">
+            <p>2. Add resources</p>
+          </div>
+
+          <div class="form-group col-sm-12 noLeft">
+            <div>
+              <table class="table" ng-show="resources.length != 0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="resource in resources track by $index">
+                    <td>{{resource.name}}</td>
+                    <td>{{resource.description}}</td>
+                    <td>
+                      <a href="{{resource.link}}">{{resource.link}}</a>
+                    </td>
+                    <td>
+                      <a href="#" ng-click="remove($index)"><i class="glyphicon glyphicon-remove"></i></a>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+              <form name="resourceForm" ng-submit="addResource(resourceForm.$valid)" class="form-horizontal resourceForm" novalidate>
+                <div class="form-group">
+                  <label for="resource-name" class="col-sm-12">Resource name: </label>
+                  <div class="col-sm-8">
+                    <input class="form-control"
+                      id="resource-name"
+                      name="name"
+                      ng-model="resourcename"
+                      required
+                      type="text"/>
+                  </div>
+                  <span class="error-required col-sm-4" ng-show="resourceForm.name.$error.required">The resource name is required* </span>
+                </div>
+
+                <div class="form-group">
+                  <label for="resource-desc" class="col-sm-12">Description:</label>
+                  <div class="col-sm-12">
+                    <text-angular
+                      type="text"
+                      ng-model="resourcedescription"></text-angular>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="link" class="col-sm-12">Link: </label>
+                  <div class="col-sm-8">
+                    <input type="text"
+                      class="form-control col-sm-8"
+                      id="link"
+                      required
+                      name="link"
+                      type="text"
+                      ng-model="reourcelink" placeholder="http://somelink.com"/>
+                  </div>
+                  <span class="error-required col-sm-4" ng-show="resourceForm.link.$error.required">The resource link is required* </span>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <button type="submit" ng-disabled="resourceForm.$invalid" class="btn form-control btn-resource">Add Resource</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        <div class="form-group col-sm-12 noLeft">
+          <div class="col-sm-8 noLeft">
+            <p class="error-list" ng-show="errors">
+              * {{errors}}
+            </p>
+
+          </div>
+          <div class="addListbtn col-sm-4 noRight">
+            <a ng-click="addList()" class="btn btn-default btn-info">Create resource list</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

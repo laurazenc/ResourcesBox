@@ -1,0 +1,27 @@
+.detailContainer {
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    margin-top: 53px;
+    width: 100%;
+
+    .row {
+        height: 100%;
+
+        & > div {
+            height: 100%;
+        }
+    }
+}
+
+#grid{
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+
+.detailContainer {
+    position: relative;
+    width: 100%;
+}

@@ -1,0 +1,18 @@
+.navbar{
+  margin-bottom: 0 !important;
+  text-align: center;
+  color: $base-color;
+  a{
+    color: $base-color;
+  }
+}
+
+.navbar-brand{
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $dark !important;
+
+  i{
+    margin-right: 7px;
+  }
+}
