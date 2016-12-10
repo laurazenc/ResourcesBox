@@ -80,3 +80,11 @@ gulp.task('run', function (cb) {
     cb(err);
   });
 });
+
+gulp-task('deploy', function (cb) {
+	exec('firebase deploy', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})

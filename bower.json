@@ -1,0 +1,22 @@
+{
+  "name": "resources-box",
+  "description": "Web Application for creating and sharing resources lists",
+  "main": "gulpfile.js",
+  "authors": [
+    "laurazenc@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/laurazenc/ResourcesBox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-masonry": "^0.16.0",
+    "imagesloaded": "^4.1.1",
+    "masonry": "^4.1.1"
+  }
+}
