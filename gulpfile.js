@@ -81,7 +81,7 @@ gulp.task('run', function (cb) {
   });
 });
 
-gulp-task('deploy', function (cb) {
+gulp.task('deploy', function (cb) {
 	exec('firebase deploy', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
