@@ -9,19 +9,26 @@
   .config(config) ;
 
 
-  run.$inject = ['$rootScope', 'FBURL']
+  run.$inject = ['$rootScope', 'FBURL', 'firebaseAuthService', 'firebaseDataService']
 
-  function run($rootScope, FBURL) {
-    if( FBURL === 'https://INSTANCE.firebaseio.com' ) {
-      // double-check that the app has been configured
-      angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
-      setTimeout(function() {
-        angular.element(document.body).removeClass('hide');
-      }, 250);
-    }
-    else {
-      $rootScope.FBURL = FBURL;
-    }
+  function run($rootScope, FBURL, firebaseAuthService, firebaseDataService) {
+    // if( FBURL === 'https://INSTANCE.firebaseio.com' ) {
+    //   // double-check that the app has been configured
+    //   angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
+    //   setTimeout(function() {
+    //     angular.element(document.body).removeClass('hide');
+    //   }, 250);
+    // }
+    // else {
+    //   $rootScope.FBURL = FBURL;
+    // }
+
+
+    firebaseAuthService.checkUser().then(function(data) {
+        $rootScope.user = data.user;
+        console.log($rootScope.user);
+    });
+
   }
 
   config.$inject = ['$routeProvider', '$locationProvider'];

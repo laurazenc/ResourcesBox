@@ -5,6 +5,33 @@
   a{
     color: $base-color;
   }
+
+  .navbar-right{
+    .btnArea {
+        text-align: right;
+        padding: 7px;
+
+        a {
+            border: none;
+            background-color: $tourquise !important;
+            padding: 7px 10px;
+            text-transform: uppercase;
+            color: white;
+            i {
+                margin-left: 5px;
+                color: white;
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .dropdown{
+      img{
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+    }
+  }
 }
 
 .navbar-brand{

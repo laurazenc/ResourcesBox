@@ -1,11 +1,13 @@
 (function() {
     'use strict';
 
-    angular.module('app').controller('AddListController', AddListController)
+    angular
+      .module('app')
+      .controller('AddListController', AddListController);
 
-    AddListController.$inject = ['$scope', 'AddListService', 'AddResourceService'];
+    AddListController.$inject = ['$scope', 'ListService', 'AddResourceService'];
 
-    function AddListController($scope, AddListService, AddResourceService) {
+    function AddListController($scope, ListService, AddResourceService) {
 
         $scope.remove = remove;
         $scope.addResource = addResource;
@@ -18,7 +20,7 @@
             selectedOption: {
                 id: '1',
                 name: 'Design'
-            } //This sets the default value of the select in the ui
+            }
         };
 
         function remove(i) {
@@ -26,9 +28,13 @@
         }
 
         function addResource() {
-            if ($scope.resourcename != '' && $scope.resourcedescription != '' && $scope.reourcelink != '') {
-                $scope.resources.push({'name': $scope.resourcename, 'description': $scope.resourcedescription, 'link': $scope.reourcelink});
-
+            if ($scope.resourcename != ''  && $scope.reourcelink != '') {
+                $scope.resources.push({
+                  'name': $scope.resourcename,
+                  'description': $scope.resourcedescription != undefined ? $scope.resourcedescription : '',
+                  'link': $scope.reourcelink
+                });
+                console.log($scope.resources);
                 $scope.resourcename = null;
                 $scope.resourcedescription = null;
                 $scope.reourcelink = null;
@@ -39,7 +45,7 @@
             if ($scope.listname != undefined) {
                 if ($scope.resources.length != 0) {
                     // Create list
-                    AddListService.addList({
+                   ListService.addList({
                       'name': $scope.listname,
                       'category': $scope.data.selectedOption.name
                     }).then(function(data) {
@@ -49,7 +55,8 @@
                               'listId': listId,
                               'name': resource.name,
                               'description': resource.description,
-                              'link': resource.link}).then(function(data) {
+                              'link': resource.link
+                            }).then(function(data) {
                                 console.log(data);
                             }).catch(function(error) {
                                 console.log(error);

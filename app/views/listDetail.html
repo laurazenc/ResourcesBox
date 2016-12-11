@@ -1,9 +1,27 @@
 <div class="detailContainer container-fluid" ng-controller="DetailController">
   <div class="row">
     <div class="col-md-12">
-      <div class="detilContainer">
-        <div>
+      <div class="detailListContainer">
+        <div class="name-title">
           {{list.name}}
+        </div>
+        <div class="resources-list">
+          <div ng-repeat="resource in resources track by $index" class="resource-item">
+            <div class="item-index">{{$index + 1}}</div>
+            <div class="item-content">
+              <div class="item-name">
+                <a href="{{resource.link}}" target="_blank">
+                  {{resource.name}}
+                </a>
+              </div>
+              <p
+                ta-bind="text"
+                ng-model="resource.description"
+                ta-readonly='disabled'
+                class="item-description">{{resource.description}}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

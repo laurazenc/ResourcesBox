@@ -20,8 +20,55 @@
   position: relative;
 }
 
+.detailListContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 10px auto;
+  background-color: #fff;
+  border-radius: 7px;
 
-.detailContainer {
-    position: relative;
-    width: 100%;
+
+  .name-title{
+    color: $tourquise;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    padding: 7px 0;
+  }
+
+  .resources-list{
+
+    .resource-item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-bottom: 2px solid $bg-color;
+
+      &:first-child{
+        border-top: 2px solid $bg-color;
+      }
+
+      .item-index{
+        width: 50px;
+        text-align: center;
+        color: #999;
+        font-weight: bold;
+      }
+
+      .item-content{
+        padding: 5px 0;
+        width: 650px;
+
+        .item-description{
+          color: #999;
+        }
+
+        p{
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }

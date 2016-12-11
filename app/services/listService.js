@@ -4,62 +4,95 @@
   angular
     .module('app')
     .service('ListService', ListService)
-    .service('AddListService', AddListService)
-    .service('GetListService', GetListService)
 
-  ListService.$inject = ['$firebaseArray', '$firebaseObject', '$q', 'firebaseDataService'];
 
-  function ListService($firebaseArray, $q, $firebaseObject, firebaseDataService) {
+  ListService.$inject = ['$firebaseArray', '$firebaseObject', '$q', 'firebaseDataService', '$location'];
+
+  function ListService($firebaseArray, $firebaseObject, $q, firebaseDataService, $location) {
     return {
-      getList: getList
+      getLists: getLists,
+      getList: getList,
+      addList: addList
     }
 
-
-    function getList(id){
-      if(firebaseDataService === undefined){
-        firebaseDataService.init;
-      }
-      var ref = firebaseDataService.lists;
-      console.log(ref.child(id));
-      var data = $firebaseObject(ref.child(id));
-      return data;
-    }
-  }
-
-  AddListService.$inject = ['$firebaseArray', '$q', 'firebaseDataService'];
-
-  function AddListService( $firebaseArray, $q, firebaseDataService){
-    var vm = this;
     if(firebaseDataService === undefined){
       firebaseDataService.init;
     }
-    var ref = firebaseDataService.lists;
-    var lists = $firebaseArray(ref);
 
-    vm.addList = addList;
+    function getLists() {
+      var ref = firebaseDataService.lists;
+      var lists = $firebaseArray(ref);
+
+      return lists;
+
+    }
+
+    function getList(id){
+      var ref = firebaseDataService.lists;
+      var data = $firebaseObject(ref.child(id));
+      return $q(function(resolve, reject) {
+          if(data){
+            resolve({'data': data});
+          }else{
+            reject();
+          }
+      });
+    }
 
     function addList(list) {
-
+      var ref = firebaseDataService.lists;
+      var lists = $firebaseArray(ref);
       return $q(function(resolve, reject) {
-        lists.$add(list)
-        .then(function(data) {
-          resolve({'data': data});
-        })
-        .catch(function(error){
-          reject({'error': error});
-        })
+        list.created_at = firebase.database.ServerValue.TIMESTAMP;
+        lists.$loaded(function() {
+          lists.$add(list)
+          .then(function(data) {
+            resolve({'data': data});
+            $location.path('/');
+          })
+          .catch(function(error){
+            reject({'error': error});
+          });
+
+        });
       });
     }
   }
 
-  GetListService.$inject = ['firebaseDataService', '$firebaseArray', '$q'];
+  // AddListService.$inject = ['$firebaseArray', '$q', 'firebaseDataService'];
+  //
+  // function AddListService( $firebaseArray, $q, firebaseDataService){
+  //   var vm = this;
+  //   if(firebaseDataService === undefined){
+  //     firebaseDataService.init;
+  //   }
+  //   var ref = firebaseDataService.lists;
+  //   var lists = $firebaseArray(ref);
+  //
+  //   vm.addList = addList;
+  //
+  //   function addList(list) {
+  //
+  //     return $q(function(resolve, reject) {
+  //       lists.$add(list)
+  //       .then(function(data) {
+  //         resolve({'data': data});
+  //       })
+  //       .catch(function(error){
+  //         reject({'error': error});
+  //       })
+  //     });
+  //   }
+  // }
 
-  function GetListService(firebaseDataService, $firebaseArray, $q) {
-    var vm = this;
-    var ref = firebaseDataService.lists;
-    var lists = $firebaseArray(ref);
-
-    return lists;
-  }
+  // GetListService.$inject = ['firebaseDataService', '$firebaseArray', '$q'];
+  //
+  // function GetListService(firebaseDataService, $firebaseArray, $q) {
+  //   var vm = this;
+  //   var ref = firebaseDataService.lists;
+  //   var lists = $firebaseArray(ref);
+  //
+  //   return lists;
+  // }
 
 }());

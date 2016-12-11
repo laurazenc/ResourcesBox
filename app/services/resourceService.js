@@ -7,9 +7,9 @@
     .service('GetResourceService', GetResourceService)
     .service('ResourceService', ResourceService);
 
-  AddResourceService.$inject = ['firebase', '$q', '$firebaseArray'];
+  AddResourceService.$inject = ['firebase', '$q', '$firebaseArray', '$window'];
 
-  function AddResourceService(firebase, $q, $firebaseArray){
+  function AddResourceService(firebase, $q, $firebaseArray, $window){
     var vm = this;
     var ref = firebase.database().ref().child("resources");
     var resources = $firebaseArray(ref);
@@ -18,6 +18,7 @@
 
     function addResource(resource){
       return $q(function(resolve, reject) {
+        resource.created_at = firebase.database.ServerValue.TIMESTAMP;
         resources.$add(resource)
           .then(function(data) {
             resolve({'data': data});
@@ -32,30 +33,29 @@
   GetResourceService.$inject = ['firebaseDataService', '$q', '$firebaseArray'];
 
   function GetResourceService(firebaseDataService, $q, $firebaseArray){
-
     var resources = $firebaseArray(firebaseDataService.resources);
-
     return (resources);
   }
 
   ResourceService.$inject = ['firebaseDataService', '$q', '$firebaseArray'];
 
   function ResourceService(firebaseDataService, $q, $firebaseArray){
-    var vm = this;
-    var resources = firebaseDataService.resources;    
-    var ref = resources.orderByChild("list_id");
-    var resources = $firebaseArray(ref);
-
-    vm.getResourceByListId = getResourceByListId;
-
+    return {
+      getResourceByListId: getResourceByListId
+    }
+    
     function getResourceByListId(id){
+      var resources = firebaseDataService.resources;
+      var ref = resources.orderByChild("list_id");
+      var resources = $firebaseArray(ref);
       var res = [];
-      angular.forEach(resources, function(value){
-        if(angular.equals(value.listId,id)){
-          res.push(value);
-        }
+      resources.$loaded(function() {
+        angular.forEach(resources, function(value){
+          if(angular.equals(value.listId,id)){
+            res.push(value);
+          }
+        });
       });
-
       return res;
     }
 
