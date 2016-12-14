@@ -19,8 +19,10 @@
   "devDependencies": {
     "eslint": "^3.11.1",
     "eslint-config-angular": "^0.5.0",
-    "eslint-plugin-angular": "^1.4.1"
-  },  "scripts": {
+    "eslint-plugin-angular": "^1.4.1",
+    "standard": "^8.6.0"
+  },
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
