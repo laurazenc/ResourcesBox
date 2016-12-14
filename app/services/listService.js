@@ -1,59 +1,58 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('app')
-    .service('ListService', ListService)
-
+    .service('ListService', ListService);
 
   ListService.$inject = ['$firebaseArray', '$firebaseObject', '$q', 'firebaseDataService', '$location'];
 
-  function ListService($firebaseArray, $firebaseObject, $q, firebaseDataService, $location) {
+  function ListService ($firebaseArray, $firebaseObject, $q, firebaseDataService, $location) {
     return {
       getLists: getLists,
       getList: getList,
       addList: addList
+    };
+
+    function init () {
+      if (firebaseDataService === undefined) {
+        firebaseDataService.init;
+      }
     }
 
-    if(firebaseDataService === undefined){
-      firebaseDataService.init;
-    }
-
-    function getLists() {
+    function getLists () {
       var ref = firebaseDataService.lists;
       var lists = $firebaseArray(ref);
 
       return lists;
-
     }
 
-    function getList(id){
+    function getList (id) {
       var ref = firebaseDataService.lists;
       var data = $firebaseObject(ref.child(id));
-      return $q(function(resolve, reject) {
-          if(data){
-            resolve({'data': data});
-          }else{
-            reject();
-          }
+      return $q(function (resolve, reject) {
+        if (data) {
+          resolve({'data': data});
+        } else {
+          reject();
+        }
       });
     }
 
-    function addList(list) {
+    function addList (list) {
       var ref = firebaseDataService.lists;
       var lists = $firebaseArray(ref);
-      return $q(function(resolve, reject) {
+      return $q(function (resolve, reject) {
         list.created_at = firebase.database.ServerValue.TIMESTAMP;
-        lists.$loaded(function() {
+        lists.$loaded(function () {
           lists.$add(list)
-          .then(function(data) {
+          .then(function (data) {
             resolve({'data': data});
             $location.path('/');
           })
-          .catch(function(error){
+          .catch(function (error) {
             reject({'error': error});
           });
-
         });
       });
     }
@@ -94,5 +93,4 @@
   //
   //   return lists;
   // }
-
 }());

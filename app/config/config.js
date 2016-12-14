@@ -1,4 +1,4 @@
-(function(){
+(function () {
   'use strict';
 
   angular
@@ -9,6 +9,4 @@
       'wu.masonry'
     ])
     .constant('FBURL', 'https://sharing-resources.firebaseio.com/sharing-resources');
-
-
 })();

@@ -1,4 +1,4 @@
-(function(){
+(function () {
   'use strict';
 
   angular
@@ -7,7 +7,7 @@
 
   DashboardService.$inject = ['$http'];
 
-  function DashboardService($http) {
+  function DashboardService ($http) {
 
   }
 })();

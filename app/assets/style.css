@@ -148,19 +148,23 @@ html {
   display: block;
   min-height: 100%; }
 
+.navbar-nav li a {
+  padding: 10px 0; }
+
 .navbar {
   margin-bottom: 0 !important;
   text-align: center;
   color: #2c404d; }
-  .navbar a {
-    color: #2c404d; }
+  .navbar li a {
+    color: #2c404d;
+    padding: 10px 0; }
   .navbar .navbar-right .btnArea {
     text-align: right;
-    padding: 7px; }
+    padding: 10px 5px; }
     .navbar .navbar-right .btnArea a {
       border: none;
       background-color: #59d9a4 !important;
-      padding: 7px 10px;
+      padding: 5px 10px;
       text-transform: uppercase;
       color: white; }
       .navbar .navbar-right .btnArea a i {

@@ -1,20 +1,32 @@
+.navbar-nav{
+  li{
+    a{
+      padding: 10px 0;
+    }
+  }
+}
+
+
 .navbar{
   margin-bottom: 0 !important;
   text-align: center;
   color: $base-color;
-  a{
-    color: $base-color;
+  li{
+    a{
+      color: $base-color;
+      padding: 10px 0;
+    }
   }
 
   .navbar-right{
     .btnArea {
         text-align: right;
-        padding: 7px;
+        padding: 10px 5px;
 
         a {
             border: none;
             background-color: $tourquise !important;
-            padding: 7px 10px;
+            padding: 5px 10px;
             text-transform: uppercase;
             color: white;
             i {
