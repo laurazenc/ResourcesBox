@@ -260,6 +260,9 @@ html {
         justify-content: space-between;
         align-items: center;
         padding: 5px 0 0; }
+        .mainContainer .card-list .card-list-container .list-data-container .list-data {
+          font-size: 11px;
+          color: #888; }
         .mainContainer .card-list .card-list-container .list-data-container .list-resources {
           text-transform: uppercase;
           color: #999;

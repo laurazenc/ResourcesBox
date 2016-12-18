@@ -24,7 +24,7 @@
               <div class="card-list-container">
                 <div class="list-content">
                   <div class="list-name">
-                    <a href="" ng-href="/list/{{list.$id}}">
+                    <a href="" ng-href="#/list/{{list.$id}}">
                       {{list.name}}
                     </a>
                   </div>
@@ -33,7 +33,13 @@
                   </div>
                 </div>
                 <div class="list-data-container">
-                  <div class="list-resources">
+                  <div class="list-data" ng-if="list.created_at">
+                    {{list.createdAt}}
+                  </div>
+                  <div class="list-resources" ng-if="list.resources.length === 1">
+                    {{list.resources.length}} resource
+                  </div>
+                  <div class="list-resources" ng-if="list.resources.length > 1">
                     {{list.resources.length}} resources
                   </div>
                   <div class="list-info" ng-show="hoverEdit">

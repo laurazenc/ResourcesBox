@@ -4,11 +4,18 @@
   },
   "hosting": {
     "public": "app",
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "rewrites": [{
+      "source": "/public/**",
+      "destination": "/public.html"
+    },
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "redirects": [{
+        "source": "/sharing-resources.firebaseapp.com/*",
+        "destination": "https://sharing-resources.firebaseapp.com",
+        "type": 302
+    }]
   }
 }

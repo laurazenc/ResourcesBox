@@ -17,8 +17,8 @@
     ListService.getLists().$loaded().then(function (data) {
       $scope.lists = data;
       angular.forEach($scope.lists, function (value) {
-        if(value.createdBy !== undefined)
-          value.user = UserService.getUserData(value.createdBy);
+        var d = new Date(value.created_at);
+        value.createdAt = (d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
         value.resources = ResourceService.getResourceByListId(value.$id);
       });
     });

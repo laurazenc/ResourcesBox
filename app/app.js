@@ -18,23 +18,22 @@
   function config ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: './views/dashboard.html',
+      templateUrl: 'views/dashboard.html',
       constroller: 'DashboardController'
     }).when('/register', {
-      templateUrl: './views/register.html',
+      templateUrl: 'views/register.html',
       constroller: 'RegisterController'
     }).when('/login', {
-      templateUrl: './views/login.html',
+      templateUrl: 'views/login.html',
       constroller: 'UserController'
     }).when('/addList', {
-      templateUrl: './views/addList.html',
+      templateUrl: 'views/addList.html',
       constroller: 'ListController'
     }).when('/list/:id', {
-      templateUrl: './views/listDetail.html',
+      templateUrl: 'views/listDetail.html',
       constroller: 'DetailController'
     }).otherwise({ redirectTo: '/' });
 
-    $locationProvider.html5Mode(false);
 
   }
 })();

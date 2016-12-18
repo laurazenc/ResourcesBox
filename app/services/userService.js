@@ -14,7 +14,7 @@
     function getUserData(uid) {
       $firebaseArray(firebaseDataService.users.child(uid)).$loaded()
         .then(function(data) {
-          console.log(data);
+          console.log(data[1].$value);
         })
         .catch(function(err) {
           console.log('Error ', err);
