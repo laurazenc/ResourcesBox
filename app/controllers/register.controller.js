@@ -5,9 +5,9 @@
     .module('app')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$scope', 'FBURL', '$location', '$firebaseObject', '$firebaseArray', 'firebase'];
+  RegisterController.$inject = ['$scope', 'FBURL', '$location', '$firebaseObject', '$firebaseArray', 'firebase', 'RegisterService'];
 
-  function RegisterController ($scope, FBURL, $location, $firebaseObject, $firebaseArray, firebase) {
+  function RegisterController ($scope, FBURL, $location, $firebaseObject, $firebaseArray, firebase, RegisterService) {
     var ref = firebase.database().ref().child('users');
     // download the data into a local object
     $scope.users = $firebaseArray(ref);

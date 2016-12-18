@@ -1,30 +1,42 @@
 {
-  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "modules": true,
+      "arrowFunctions": true,
+      "blockBindings": true,
+      "destructuring": true,
+      "classes": true
+    }
+  },
   "rules": {
-    "brace-style": "error",
-    "comma-spacing": ["error", {"before": false, "after": true}],
-    "no-console": ["warn", {"allow": ["info"]}],
-    "no-multi-spaces": "off",
-    "quotes": ["error", "single", "avoid-escape"],
-    "space-before-blocks": "error",
-    "space-before-function-paren": ["error", "never"]
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ]
   },
   "env": {
+    "es6": true,
     "browser": true,
     "jasmine": true,
-    "mocha": true,
-    "protractor": true
+    "commonjs": true
   },
-  "plugins": [
-    "angular",
-    "html"
-  ],
   "globals": {
-    "angular": false,
-    "module": false,
-    "require": false,
-    "_": false,
-    "__dirname": false,
-    "sha1": false,
-  }
+    "angular": true,
+    "inject": true
+  },
+  "extends": "eslint:recommended"
 }

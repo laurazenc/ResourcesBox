@@ -1,0 +1,21 @@
+<div class="pageContainer container-fluid" ng-controller="UserController">
+  <div class="row">
+    <section class="loginWrapper">
+
+      <h3>Choose a Provider to Login</h3>
+      <div class="loginContainer">
+        <button type="button" class="btn btn-default btn-google" ng-click="login('google');">
+          <span><i class="fa fa-google" aria-hidden="true"></i> Use My Google Account</span>
+        </button>
+
+        <!-- <button type="button" class="btn btn-default btn-twitter" ng-click="login('twitter')">
+          <span><i class="fa fa-twitter" aria-hidden="true"></i> Use My Twitter Account</span>
+        </button> -->
+
+        <button type="button" class="btn btn-default btn-github" ng-click="login('github');">
+          <span><i class="fa fa-github" aria-hidden="true"></i> Use My Github Account</span>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>

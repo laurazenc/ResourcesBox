@@ -5,9 +5,9 @@
       .module('app')
       .controller('AddListController', AddListController);
 
-  AddListController.$inject = ['$scope', 'ListService', 'AddResourceService'];
+  AddListController.$inject = ['$rootScope', '$scope', 'ListService', 'AddResourceService'];
 
-  function AddListController ($scope, ListService, AddResourceService) {
+  function AddListController ($rootScope, $scope, ListService, AddResourceService) {
     $scope.remove = remove;
     $scope.addResource = addResource;
     $scope.addList = addList;
@@ -31,9 +31,9 @@
         $scope.resources.push({
           'name': $scope.resourcename,
           'description': $scope.resourcedescription !== undefined ? $scope.resourcedescription : '',
-          'link': $scope.reourcelink
+          'link': $scope.reourcelink,
+          'user': $rootScope.user.uid
         });
-        console.log($scope.resources);
         $scope.resourcename = null;
         $scope.resourcedescription = null;
         $scope.reourcelink = null;
@@ -43,10 +43,11 @@
     function addList () {
       if ($scope.listname !== undefined) {
         if ($scope.resources.length !== 0) {
-                    // Create list
+          // Create list
           ListService.addList({
             'name': $scope.listname,
-            'category': $scope.data.selectedOption.name
+            'category': $scope.data.selectedOption.name,
+            'createdBy': $rootScope.user.uid
           }).then(function (data) {
             var listId = data.data.path.o[1];
             angular.forEach($scope.resources, function (resource, key) {
@@ -54,13 +55,17 @@
                 'listId': listId,
                 'name': resource.name,
                 'description': resource.description,
-                'link': resource.link
+                'link': resource.link,
+                'user': resource.user
               }).then(function (data) {
                 console.log(data);
               }).catch(function (error) {
-                console.log(error);
+                console.log('Error ',error);
               });
             });
+          })
+          .catch(function(error) {
+            console.log('Error ',error);
           });
         } else {
           $scope.errors = 'List should have at least one resource added';

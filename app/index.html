@@ -2,7 +2,7 @@
 <html ng-app="app">
 
 <head>
-    <base href="/">
+    <base href="/" />
     <meta charset="utf-8">
     <title>Resources Box</title>
 
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/textAngular.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -36,7 +37,7 @@
 </head>
 
 <body>
-    <div class="navbar navbar-fixed-top" role="navigation" ng-controller="UserController as main">
+    <div class="navbar navbar-fixed-top" role="navigation" ng-controller="UserController">
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-default">
@@ -54,30 +55,29 @@
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="navbar-collapse">
-                            <ul class="nav navbar-nav navbar-left">
-                                <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Lists</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-link"></i> Resources</a></li>
-                            </ul>
+                            <!-- <ul class="nav navbar-nav navbar-left">
+                              <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Lists</a></li>
+                              <li><a href="#"><i class="glyphicon glyphicon-link"></i> Resources</a></li>
+                            </ul> -->
                             <ul class="nav navbar-nav navbar-right">
-                              <li class="btnArea">
+                              <li class="btnArea" ng-show="user !== undefined">
                                 <a href="/addList"
                                   class="btn btn-info">Add List <i class="glyphicon glyphicon-plus"></i>
                                 </a>
                               </li>
-                                <li ng-if="main.user === undefined"><a href="/register">Sign up</a></li>
-                                <li ng-if="main.user === undefined" ng-click="main.login()"><a href="#">Sign in</a></li>
-                                <li class="dropdown"
-                                  ng-show="main.user != undefined"
-                                  ng-click="$event.preventDefault();">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                      <img ng-src="{{main.user.photoURL}}" width="25px" height"25px" alt=""> {{main.user.email}}<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a ng-click="main.logOut()">Sign out</a></li>
-                                    </ul>
-                                </li>
+                              <li ng-if="user === undefined"><a target="_self" href="#/login">Sign up / Sign in</a></li>
+                              <li class="dropdown"
+                                ng-show="user != undefined"
+                                ng-click="$event.preventDefault();">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img ng-src="{{user.photoURL}}" width="25px" height"25px" alt=""> {{user.email}}<span class="caret"></span></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href="#">Action</a></li>
+                                      <li><a href="#">Another action</a></li>
+                                      <li role="separator" class="divider"></li>
+                                      <li><a ng-click="logOut()">Sign out</a></li>
+                                  </ul>
+                              </li>
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -106,6 +106,7 @@
     <script src="./services/dashboardService.js"></script>
     <script src="./services/listService.js"></script>
     <script src="./services/resourceService.js"></script>
+    <script src="./services/userService.js"></script>
 
     <script src="./assets/common/functions.js"></script>
 

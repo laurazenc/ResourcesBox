@@ -133,6 +133,17 @@ html {
   color: #232323;
   background-color: #f4f4f4 !important; }
 
+.pageContainer {
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  margin-top: 68px;
+  width: 100%; }
+  .pageContainer .row {
+    height: 100%; }
+    .pageContainer .row > div {
+      height: 100%; }
+
 .addBtn {
   padding: 8px 9px !important;
   margin-top: 7px;
@@ -181,17 +192,6 @@ html {
   color: #2f313f !important; }
   .navbar-brand i {
     margin-right: 7px; }
-
-.dashContainer {
-  height: 100%;
-  min-height: 100%;
-  position: relative;
-  margin-top: 68px;
-  width: 100%; }
-  .dashContainer .row {
-    height: 100%; }
-    .dashContainer .row > div {
-      height: 100%; }
 
 #grid {
   margin: 0 auto;
@@ -273,80 +273,91 @@ html {
             margin-left: 15px;
             font-size: 12px; }
 
-.addListContainer {
-  margin-top: 60px; }
-  .addListContainer p {
-    text-transform: uppercase;
-    font-size: 11px;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #59d9a4;
-    display: block; }
-  .addListContainer form label {
-    font-weight: normal;
-    color: #999; }
-  .addListContainer form .error-required {
-    color: #FF5252;
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-    line-height: 36px;
-    text-align: right; }
-  .addListContainer form .btn-resource {
-    width: 100%;
-    background-color: #818ff0;
-    color: white;
-    text-transform: uppercase;
-    padding: 0 10px; }
-  .addListContainer .btn-info {
-    background-color: #59d9a4 !important;
-    border: #59d9a4; }
-  .addListContainer .addListbtn a {
-    padding: 15px;
-    text-transform: uppercase; }
-  .addListContainer .error-list {
-    margin-top: 0 !important;
-    color: #FF5252;
-    text-transform: none;
-    font-size: 12px;
-    padding: 7px; }
-  .addListContainer .resourceForm {
-    padding: 10px;
-    background-color: #f4f4f4;
-    border: 1px solid #e7e7e7;
-    border-radius: 7px; }
-    .addListContainer .resourceForm label {
-      color: #818ff0;
-      font-weight: bold; }
-  .addListContainer .noLeft {
-    padding-left: 0 !important;
-    clear: both; }
-  .addListContainer .noRight {
-    padding-right: 0 !important;
-    text-align: right; }
-  .addListContainer .table thead tr th {
-    border: none !important;
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
-    color: #9a9a9a; }
-  .addListContainer .table tbody tr {
-    background-color: #f4f8f9; }
-    .addListContainer .table tbody tr td {
-      border-bottom: 5px solid #fff !important;
-      padding: 7px;
-      vertical-align: middle;
-      color: #78909C; }
-      .addListContainer .table tbody tr td:last-child {
-        text-align: center; }
-        .addListContainer .table tbody tr td:last-child i {
-          color: #FF5252; }
-    .addListContainer .table tbody tr:after {
-      margin-bottom: 10px; }
-  .addListContainer .ta-editor.ta-html, .addListContainer .ta-scroll-window.form-control {
-    min-height: 100px  !important; }
-  .addListContainer .ta-scroll-window > .ta-bind {
-    min-height: 100px !important; }
+.addListContainer p {
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #59d9a4;
+  display: block; }
+
+.addListContainer form label {
+  font-weight: normal;
+  color: #999; }
+
+.addListContainer form .error-required {
+  color: #FF5252;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: right; }
+
+.addListContainer form .btn-resource {
+  width: 100%;
+  background-color: #818ff0;
+  color: white;
+  text-transform: uppercase;
+  padding: 0 10px; }
+
+.addListContainer .btn-info {
+  background-color: #59d9a4 !important;
+  border: #59d9a4; }
+
+.addListContainer .addListbtn a {
+  padding: 15px;
+  text-transform: uppercase; }
+
+.addListContainer .error-list {
+  margin-top: 0 !important;
+  color: #FF5252;
+  text-transform: none;
+  font-size: 12px;
+  padding: 7px; }
+
+.addListContainer .resourceForm {
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #e7e7e7;
+  border-radius: 7px; }
+  .addListContainer .resourceForm label {
+    color: #818ff0;
+    font-weight: bold; }
+
+.addListContainer .noLeft {
+  padding-left: 0 !important;
+  clear: both; }
+
+.addListContainer .noRight {
+  padding-right: 0 !important;
+  text-align: right; }
+
+.addListContainer .table thead tr th {
+  border: none !important;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9a9a9a; }
+
+.addListContainer .table tbody tr {
+  background-color: #f4f8f9; }
+  .addListContainer .table tbody tr td {
+    border-bottom: 5px solid #fff !important;
+    padding: 7px;
+    vertical-align: middle;
+    color: #78909C; }
+    .addListContainer .table tbody tr td:last-child {
+      text-align: center; }
+      .addListContainer .table tbody tr td:last-child i {
+        color: #FF5252; }
+  .addListContainer .table tbody tr:after {
+    margin-bottom: 10px; }
+
+.addListContainer .ta-editor.ta-html, .addListContainer .ta-scroll-window.form-control {
+  min-height: 100px  !important; }
+
+.addListContainer .ta-scroll-window > .ta-bind {
+  min-height: 100px !important; }
 
 .detailContainer {
   height: 100%;
@@ -397,3 +408,31 @@ html {
         color: #999; }
       .detailListContainer .resources-list .resource-item .item-content p {
         margin-bottom: 0; }
+
+.loginWrapper {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .loginWrapper .loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .loginWrapper .loginContainer button {
+      margin: 7px 0;
+      height: 50px;
+      width: 250px;
+      text-align: left; }
+      .loginWrapper .loginContainer button span {
+        font-size: 18px;
+        color: #fff; }
+        .loginWrapper .loginContainer button span i {
+          font-size: 20px; }
+    .loginWrapper .loginContainer .btn-google {
+      background-color: #f44336; }
+    .loginWrapper .loginContainer .btn-twitter {
+      background-color: #039be5; }
+    .loginWrapper .loginContainer .btn-github {
+      background-color: #585858; }

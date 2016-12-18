@@ -3,11 +3,17 @@
 
   angular
     .module('app')
-    .service('RegisterService', RegisterService);
+    .service('RegisterService', RegisterService)
 
-  RegisterService.$inject = ['$http'];
+  RegisterService.$inject = ['$log', '$window', '$interval', '$rootScope'];
 
-  function RegisterService ($http) {
+  function RegisterService($log, $window, $interval, $rootScope) {
 
-  }
+    var service = {
+
+    };
+
+    return service;
+  };
+
 })();

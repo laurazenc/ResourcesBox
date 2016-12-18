@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('app', ['app.config']).run(run).config(config);
+  angular.module('app', ['app.config'])
+  .run(run).config(config);
 
   run.$inject = ['$rootScope', 'FBURL', 'firebaseAuthService', 'firebaseDataService'];
 
@@ -15,20 +16,25 @@
   config.$inject = ['$routeProvider', '$locationProvider'];
 
   function config ($routeProvider, $locationProvider) {
-    $routeProvider.when('/', {
+    $routeProvider
+    .when('/', {
       templateUrl: './views/dashboard.html',
       constroller: 'DashboardController'
     }).when('/register', {
       templateUrl: './views/register.html',
       constroller: 'RegisterController'
+    }).when('/login', {
+      templateUrl: './views/login.html',
+      constroller: 'UserController'
     }).when('/addList', {
       templateUrl: './views/addList.html',
       constroller: 'ListController'
     }).when('/list/:id', {
       templateUrl: './views/listDetail.html',
       constroller: 'DetailController'
-    });
+    }).otherwise({ redirectTo: '/' });
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(false);
+
   }
 })();

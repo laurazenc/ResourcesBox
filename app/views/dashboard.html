@@ -1,19 +1,10 @@
-<div class="dashContainer container-fluid" ng-controller="DashboardController">
+<div class="pageContainer container-fluid" ng-controller="DashboardController">
   <div class="row">
     <div class="col-md-12">
       <div class="mainContainer">
         <div class="col-md-12" id="grid" >
           <div class="row container-wrapper"
-          masonry="{
-            transitionDuration: '.9s',
-            hiddenStyle: {
-              opacity: .001,
-              transform: 'scale(0.01)'
-            },
-            visibleStyle: {
-              opacity: 1
-            }
-          }"
+          masonry="{ transitionDuration: '.9s', hiddenStyle: { opacity: .001, transform: 'scale(0.01)' }, visibleStyle: { opacity: 1 } }"
           reload-on-show
           reload-on-resize>
             <div

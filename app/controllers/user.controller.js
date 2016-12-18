@@ -5,12 +5,16 @@
     .module('app')
     .controller('UserController', UserController);
 
-  UserController.$inject = ['$rootScope', 'firebaseAuthService'];
+  UserController.$inject = ['$scope', '$rootScope', 'firebaseAuthService', 'RegisterService', '$location'];
 
-  function UserController ($rootScope, firebaseAuthService) {
+  function UserController ($scope, $rootScope, firebaseAuthService, RegisterService, $location) {
     var vm = this;
     vm.user = $rootScope.user;
     init();
+    $scope.login = login;
+    $scope.logOut = logOut;
+
+
     $rootScope.$watch($rootScope.user, function () {
       firebaseAuthService.checkUser().then(function (data) {
         $rootScope.user = data.user;
@@ -29,14 +33,20 @@
       });
     }
 
-    vm.login = function () {
-      firebaseAuthService.handleAuth().then(function (data) {
+    function login(provider) {
+      firebaseAuthService.handleAuth(provider)
+      .then(function (data) {
         $rootScope.user = data.user;
+        console.log(data.user.photoURL);
         vm.user = $rootScope.user;
+        $location.path('/');
+      })
+      .catch(function(error) {
+        console.log('Error ', error);
       });
     };
 
-    vm.logOut = function () {
+    function logOut() {
       firebaseAuthService.handleLogout().then(function (data) {
         $rootScope.user = undefined;
         vm.user = $rootScope.user;

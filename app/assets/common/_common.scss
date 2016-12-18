@@ -141,6 +141,22 @@ html {
 	background-color: $bg-color !important;
 }
 
+.pageContainer{
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  margin-top: 68px;
+  width: 100%;
+
+  .row {
+      height: 100%;
+
+      & > div {
+          height: 100%;
+      }
+  }
+}
+
 .addBtn {
 	padding: 8px 9px !important;
 	margin-top: 7px;
