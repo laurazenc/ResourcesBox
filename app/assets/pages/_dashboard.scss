@@ -1,11 +1,5 @@
-$sidebarWidth: 254px;
-$a: 100%;
-
-
 #grid{
-  margin: 0 auto;
   height: 100%;;
-  text-align: center;
   position: relative;
 }
 
@@ -14,6 +8,14 @@ $a: 100%;
     position: relative;
     width: 100%;
     height: 100%;
+
+    .container-wrapper {
+    -moz-column-width: 18em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em;
+
+    }
 
     .card-loading{
       display: flex;
@@ -31,140 +33,123 @@ $a: 100%;
 
     .card-list {
       margin-bottom: 10px;
-      min-height: 1px;
-      height: auto !important;
-        .card-list-container {
-            background-color: #fff;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-            border-radius: 5px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
+      display: inline-block;
+      max-width: 300px;
+      min-width: 280px;
+      width:  100%;
+      background-color: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+      border-radius: 3px;
 
-            .list-content{
+      a{
+        color: $black;
+        position:relative;
+        display: block;
+        padding: 15px;
+        &:hover{
+          text-decoration: none;
+          cursor: auto;
+        }
+      }
+      .card-list-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .list-content{
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 15px;
+
+          .list-name {
+            font-size: 18px;
+            line-height: 1.2em;
+            font-weight: bold;
+            text-align: left;
+            color: $black;
+            margin-right: 15px;
+          }
+
+          .list-category {
+            text-transform: uppercase;
+            font-size: 9px;
+            line-height: 17px;
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: white;
+          }
+          .category-Design{
+            background-color: $yellow;
+          }
+
+          .category-Other{
+            background-color: $blue;
+          }
+
+          .category-Development{
+            background-color: $red;
+          }
+
+          .category-Tutorial{
+            background-color: $orange;
+          }
+        }
+
+        .list-tags {
+          margin-bottom: 10px;
+          span {
+            display: inline-block;
+            background-color: $catskill-white;
+            color: $malibu;
+            border-radius: 20px;
+            font-size: 10px;
+            padding: 2px 5px;
+            opacity: 0.7;
+            &:hover {
+              background-color: #EDF1F6;
+              color: $malibu;
+              opacity: 1;
+            }
+          }
+
+
+          span:not(:last-of-type) {
+            margin-right: 5px;
+          }
+        }
+
+        .list-data-container {
+          border-top: 1px solid $catskill-white;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 0 0;
+          color: $nepal;
+
+          .list-data, .list-resources{
+            font-size: 12px;
+          }
+
+          .list-resources {
+            text-transform: uppercase;
+          }
+
+          .list-info{
+            ul{
               display: flex;
               justify-content: space-between;
-              align-items: center;
-              .list-name {
-                font-size: 16px;
-                font-weight: bold;
-                text-align: left;
+              margin-bottom: 0 !important;
 
-                a{
-                  color: #333;
-
-                  &:hover{
-                    text-decoration: none;
-                    color: $link;
-                    cursor: auto;
-                  }
-                }
-              }
-
-              .list-category {
+              li{
                 text-transform: uppercase;
-                font-size: 10px;
-                font-weight: bold;
-                line-height: 17px;
-                padding: 2px 5px;
-                border-radius: 5px;
-                color: white;
-              }
-              .category-Design{
-                background-color: $yellow;
-              }
-
-              .category-Other{
-                background-color: $blue;
-              }
-
-              .category-Development{
-                background-color: $red;
-              }
-
-              .category-Tutorial{
-                background-color: $orange;
+                margin-left: 15px;
+                font-size: 12px;
               }
             }
-
-            .list-data-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 5px 0 0;
-
-                .list-data{
-                  font-size: 11px;
-                  color: #888;
-                }
-
-                .list-resources{
-                  text-transform: uppercase;
-                  color: #999;
-                  font-size: 12px;
-                }
-
-                .list-info{
-                  ul{
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 0 !important;
-
-                    li{
-                      text-transform: uppercase;
-                      margin-left: 15px;
-                      font-size: 12px;
-                    }
-                  }
-                }
-            }
-
-            // .list-resources-container {
-            //     clear: both;
-            //     // max-height: 150px;
-            //     height: auto;
-            //     margin-top: 10px;
-            //     overflow: scroll;
-            //     position: relative;
-            //
-            //     .list-resource {
-            //         padding: 5px;
-            //         width: 100%;
-            //         border-bottom: 1px dashed #ccc;
-            //
-            //         .resource-name {
-            //             font-size: 15px;
-            //
-            //             a {
-            //                 color: #999;
-            //
-            //                 &:hover {
-            //                     text-decoration: underline;
-            //                 }
-            //             }
-            //         }
-            //
-            //         .resource-info {
-            //           animation: all 1s linear;
-            //             .resource-description {
-            //                 font-size: 13px;
-            //                 color: #999;
-            //             }
-            //         }
-            //
-            //         .more-info {
-            //             text-transform: uppercase;
-            //             font-size: 12px;
-            //             text-align: right;
-            //             cursor: pointer;
-            //         }
-            //
-            //         &:last-child {
-            //             border: none;
-            //         }
-            //     }
-            // }
+          }
         }
+      }
     }
 }

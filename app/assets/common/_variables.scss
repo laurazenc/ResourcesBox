@@ -1,14 +1,34 @@
-$bg-color:      #f4f4f4;
+
+//name-that-color
+$oxford-blue:       #3C4858;
+$alto:              #D3D3D3;
+$whisper:           #E6E8F3;
+$catskill-white:    #E6ECF4;
+$nepal:             #959FC1;
+$selago:            #F7F9FE;
+$malibu:            #84A1FF;
+$royal-blue:        #6D4DF2;
+
+$white:             #fff;
+$black:             $oxford-blue;
+$tourquise:         $royal-blue;
+$blue:              #66baf4;
+$yellow:            #f4bd3f;
+$red:               #e95547;
+$orange:            #fea15e;
+
+$google:            #f44336;
+$twitter:           #039be5;
+$github:            #585858;
+
+
+$bg-color:      $whisper;
 $link:          rgb(3,155,229);
 
 $base-color:    #2c404d;
-$dark:          #2f313f;
-$tourquise:     #59d9a4;
-$blue:          #66baf4;
-$yellow:        #f4bd3f;
-$red:           #e95547;
-$orange:        #fea15e;
+$dark:          #182133;
 
-$google:        #f44336;
-$twitter:       #039be5;
-$github:        #585858;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Roboto:300,400,500,700');
+
+$primary-font-family        : 'Roboto';
+$secondary-font-family      : 'Open Sans';

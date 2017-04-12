@@ -34,14 +34,15 @@
 
   function GetResourceService (firebaseDataService, $q, $firebaseArray) {
     var resources = $firebaseArray(firebaseDataService.resources);
-    return (resources);
+    return resources;
   }
 
-  ResourceService.$inject = ['firebaseDataService', '$q', '$firebaseArray'];
+  ResourceService.$inject = ['firebaseDataService', '$q', '$firebaseArray', '$firebaseObject'];
 
-  function ResourceService (firebaseDataService, $q, $firebaseArray) {
+  function ResourceService (firebaseDataService, $q, $firebaseArray, $firebaseObject) {
     return {
-      getResourceByListId: getResourceByListId
+      getResourceByListId: getResourceByListId,
+      deleteResource: deleteResource
     };
 
     function getResourceByListId (id) {
@@ -57,6 +58,23 @@
         });
       });
       return res;
+    }
+
+    function deleteResource(resource) {
+      var resources = firebaseDataService.resources;
+      var toDelete = $firebaseObject(resources.child(resource.$id));
+      console.log(toDelete);
+      // var obj = $firebaseObject(toDelete);
+      // return obj.$remove();
+      return $q(function (resolve, reject) {
+        toDelete.$remove()
+          .then(function (data) {
+            resolve({'data': data});
+          })
+          .catch(function (error) {
+            reject({'error': error});
+          });
+      });
     }
   }
 }());

@@ -2,7 +2,9 @@
   'use strict';
 
   angular.module('app', ['app.config'])
-  .run(run).config(config);
+  .run(run)
+  .config(config)
+  .config(notificationsConfig);
 
   run.$inject = ['$rootScope', 'FBURL', 'firebaseAuthService', 'firebaseDataService'];
 
@@ -14,7 +16,6 @@
   }
 
   config.$inject = ['$routeProvider', '$locationProvider'];
-
   function config ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
@@ -33,7 +34,21 @@
       templateUrl: 'views/listDetail.html',
       constroller: 'DetailController'
     }).otherwise({ redirectTo: '/' });
-
-
   }
+
+
+  notificationsConfig.$inject = ['notificationsConfigProvider'];
+  function notificationsConfig (notificationsConfigProvider) {
+    // auto hide
+    notificationsConfigProvider.setAutoHide(true);
+    // delay before hide
+    notificationsConfigProvider.setHideDelay(1500);
+    // support HTML
+    //notificationsConfigProvider.setAcceptHTML(false);
+    // Set an animation for hiding the notification
+    notificationsConfigProvider.setAutoHideAnimation('fadeOutNotifications');
+    // delay between animation and removing the nofitication
+    notificationsConfigProvider.setAutoHideAnimationDelay(1200);
+
+  };
 })();

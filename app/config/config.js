@@ -6,7 +6,11 @@
       'firebase',
       'ngRoute',
       'textAngular',
-      'wu.masonry'
+      'ngNotificationsBar',
+      'ngSanitize',
+      'ngDialog',
+      'ngTagsInput'
     ])
     .constant('FBURL', 'https://sharing-resources.firebaseio.com/sharing-resources');
+
 })();

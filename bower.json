@@ -18,6 +18,9 @@
     "angular-masonry": "^0.16.0",
     "imagesloaded": "^4.1.1",
     "masonry": "^4.1.1",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "ng-notifications-bar": "^0.0.16",
+    "ng-dialog": "^0.6.6",
+    "ng-tags-input": "^3.1.1"
   }
 }

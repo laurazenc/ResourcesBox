@@ -124,9 +124,15 @@ table {
 	border-spacing: 0;
 }
 
-* {
-	font-family: Roboto, Arial, sans-serif;
+h1, h2, h3 {
+	margin-top: 0px!important;
 }
+
+* {
+	font-family: 'Roboto', Arial, sans-serif;
+}
+
+*, *:before, *:after {box-sizing:  border-box !important;}
 
 a {
 	color: $link;
@@ -173,4 +179,8 @@ html {
 .container {
 	display: block;
 	min-height: 100%;
+}
+
+.notifications .notifications-container{
+	top: 59px !important;
 }

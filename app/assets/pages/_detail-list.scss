@@ -1,24 +1,4 @@
-.detailContainer {
-    height: 100%;
-    min-height: 100%;
-    position: relative;
-    margin-top: 53px;
-    width: 100%;
 
-    .row {
-        height: 100%;
-
-        & > div {
-            height: 100%;
-        }
-    }
-}
-
-#grid{
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-}
 
 .detailListContainer{
   display: flex;
@@ -26,20 +6,45 @@
   flex-direction: column;
   max-width: 700px;
   margin: 10px auto;
-  background-color: #fff;
   border-radius: 7px;
 
+  .detail-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px 0;
+    .name-title{
+      color: $tourquise;
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .detail-edit{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      span {
+        &:first-child{
+          margin-right: 7px;
+        }
+      }
+    }
+  }
 
-  .name-title{
-    color: $tourquise;
-    font-size: 24px;
-    text-align: center;
-    font-weight: bold;
-    padding: 7px 0;
+  .list-details{
+    padding: 0 20px 0;
+    margin-bottom: 7px;
+    div{
+      color: #c4bcc1;
+      font-size: .9em;
+      i{
+        margin-right: 5px;
+      }
+    }
   }
 
   .resources-list{
-
+    background-color: #fff;
     .resource-item{
       display: flex;
       flex-direction: row;

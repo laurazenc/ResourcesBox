@@ -3,24 +3,37 @@
 
   angular.module('app').controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$scope', 'ListService', 'GetResourceService', 'ResourceService', 'UserService'];
+  DashboardController.$inject = ['$scope', 'ListService', 'GetResourceService', 'ResourceService', 'TagService', 'UserService'];
+  function DashboardController ($scope, ListService, GetResourceService, ResourceService, TagService, UserService) {
 
-  function DashboardController ($scope, ListService, GetResourceService, ResourceService, UserService) {
-    $scope.hoverIn = function () {
+    $scope.lists        = [{}, {}, {}];
+    $scope.hoverIn      = hoverIn;
+    $scope.hoverOut     = hoverOut;
+    $scope.getTagsValue = getTagsValue;
+
+    function hoverIn() {
       this.hoverEdit = true;
     };
 
-    $scope.hoverOut = function () {
+    function hoverOut () {
       this.hoverEdit = false;
     };
+
+    function getTagsValue(tags) {
+      return TagService.getListTagsValue(tags);
+    }
 
     ListService.getLists().$loaded().then(function (data) {
       $scope.lists = data;
       angular.forEach($scope.lists, function (value) {
+
         var d = new Date(value.created_at);
-        value.createdAt = (d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
-        value.resources = ResourceService.getResourceByListId(value.$id);
+        var tags = (value.tags) ? getTagsValue((value.tags).split(',')) : [];
+        value.createdAt     = (d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
+        value.tagList       = tags;
+        value.resources     = ResourceService.getResourceByListId(value.$id);
       });
     });
   }
+
 })();
