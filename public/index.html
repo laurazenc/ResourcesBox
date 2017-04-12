@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Notes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <!-- Older Chrome configuration -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Notes">
+    <link rel="icon"
+          sizes="192x192"
+          href="bower_components/note-app/common/images/icon-4x.png">
+    <link rel="manifest" href="manifest.json">
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="bower_components/web-animations-js/web-animations.min.js"></script>
+    <link rel="import" href="bower_components/platinum-sw/platinum-sw-elements.html">
+    <link rel="import" href="bower_components/polymerfire/firebase-app.html">
+    <link rel="import" href="resources-app.html">
+
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <resources-app></resources-app>
+    <platinum-sw-register
+        auto-register
+        skip-waiting
+        clients-claim
+        reload-on-install
+        href="sw-import.js">
+      <platinum-sw-cache
+          default-cache-strategy="networkFirst">
+      </platinum-sw-cache>
+    </platinum-sw-register>
+    <firebase-app
+      "name"="resources"
+      "api-key"="AIzaSyBT2bk3MzVlU2sK3nEdF5mFiO_0Sc0U7YQ"
+      "auth-domain"="sharing-resources.firebaseapp.com"
+      "database-uRL"="https://sharing-resources.firebaseio.com"
+    >
+
+    </firebase-app>
+  </body>
+</html>
